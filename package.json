@@ -4,12 +4,13 @@
   "description": "Proyecto 1",
   "main": "App.js",
   "scripts": {
+    "start": "nodemon App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Toyama Rodrigo",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }
