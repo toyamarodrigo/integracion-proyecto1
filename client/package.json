@@ -1,13 +1,18 @@
 {
   "name": "client",
   "version": "0.0.0",
+  "proxy": "https://localhost:3000/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.6.7",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "axios": "^0.21.4",
+    "framer-motion": "^4.1.17",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
