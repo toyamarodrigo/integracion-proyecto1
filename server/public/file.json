@@ -1,0 +1,7 @@
+[
+  { "id": "1", "data": "Roberto", "isPresent": true },
+  { "id": "2", "data": "Joel", "isPresent": true },
+  { "id": "3", "data": "Pepe", "isPresent": false },
+  { "id": "4", "data": "FEDE", "isPresent": false },
+  { "id": "5", "data": "Jose", "isPresent": true }
+]

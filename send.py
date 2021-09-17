@@ -6,7 +6,7 @@ import requests
 
 #reader = SimpleMFRC522()
 
-url = 'http://localhost:3001'
+url = 'http://localhost:3001/nfc'
 
 try:
     print("Colocar Tarjeta")
@@ -15,13 +15,13 @@ try:
     #print(text)
 
     body = {
-        'user': '12357',
-        'data': 'Jose'
+        'id': '7',
+        'data': 'FEDE',
     }
 
     print(body)
 
-    req = requests.post(url + '/write', body)
+    req = requests.post(url + '/create', body)
     print(req.text)
 
 except:
