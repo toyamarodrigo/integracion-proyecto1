@@ -1,13 +1,14 @@
-const fs = require('fs');
-const { getUserPresent } = require('../utils/isUserPresent');
-const { JSON_FILE } = require('../utils/constants');
+const fs = require("fs");
+
+const { getUserPresent } = require("../utils/isUserPresent");
+const { JSON_FILE } = require("../utils/constants");
 
 const createUsers = (req, res) => {
   const data = req.body;
   const id = req.body.id;
 
   // READ json file
-  const file = JSON.parse(fs.readFileSync(JSON_FILE, 'utf8'));
+  const file = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
 
   // Check if TagID exists in json file
   const isUserPresent = getUserPresent(id, file);
@@ -23,13 +24,14 @@ const createUsers = (req, res) => {
             date: new Date(),
           };
         }
+
         return user;
       })
       .sort((a, b) => b.isPresent - a.isPresent);
 
     fs.writeFile(JSON_FILE, JSON.stringify(filterUser), (err) => {
       if (err) return res.sendStatus(400);
-      console.log('User successfuly updated in file!');
+      console.log("User successfuly updated in file!");
     });
   } else {
     // Else we add the Tag Info to the json file + isPresent => true
@@ -37,13 +39,13 @@ const createUsers = (req, res) => {
       JSON_FILE,
       JSON.stringify(
         [...file, { ...data, isPresent: true, date: new Date() }].sort(
-          (a, b) => b.isPresent - a.isPresent
-        )
+          (a, b) => b.isPresent - a.isPresent,
+        ),
       ),
       (err) => {
         if (err) return res.sendStatus(400);
-        console.log('User successfuly written to the file!');
-      }
+        console.log("User successfuly written to the file!");
+      },
     );
   }
 
