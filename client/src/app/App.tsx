@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Stack, Wrap, Text, IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import moment from "moment";
 
-import { getUsers } from "../api/fetch.users";
 import { Loader, Card } from "../components";
-import { showTimeDifference } from "../utils/showMHD";
-import { MINUTES, HOURS, DAYS, TIME_FORMAT } from "../utils/constants";
+import { showTimeDifference, MINUTES, HOURS, DAYS, TIME_FORMAT } from "../utils";
+import { useGetUsers, useInterval } from "../hooks";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [users, setUsers] = useState(null);
-  const [actualTime, setActualTime] = useState(moment().format(TIME_FORMAT));
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isLoading, users } = useGetUsers();
+  const { actualTime } = useInterval();
 
   const handleTimeDifference = (actualTime, userDate) => {
     const minutes = moment(actualTime, TIME_FORMAT).diff(userDate, MINUTES);
@@ -24,26 +22,6 @@ const App = () => {
     if (hours < 23) return showTimeDifference(actualTime, userDate, HOURS) + "hs";
     if (days < 30) return showTimeDifference(actualTime, userDate, DAYS) + "d";
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchUsers = setInterval(async () => {
-      const data = await getUsers();
-
-      if (data) setUsers(data);
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearInterval(fetchUsers);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActualTime(moment().format(TIME_FORMAT));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   if (isLoading) return <Loader />;
 
@@ -57,6 +35,7 @@ const App = () => {
       w="100%"
     >
       <IconButton
+        aria-label="Toggle color mode"
         icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         position="absolute"
         right={8}
