@@ -6,35 +6,39 @@ const createUsers = (req, res) => {
   const data = req.body;
   const id = req.body.id;
 
-  console.log('data :>> ', data);
-
-  // Leer json con tags ids
+  // READ json file
   const file = JSON.parse(fs.readFileSync(JSON_FILE, 'utf8'));
 
-  // Buscar si Tag ID en req existe en json.
+  // Check if TagID exists in json file
   const isUserPresent = getUserPresent(id, file);
 
-  // Si existe Tag ID, setear isPresent false.
+  // If TagID exists, set isPresent => false.
   if (isUserPresent) {
     const filterUser = file
       .map((user) => {
         if (user.id === id) {
-          return { ...user, isPresent: !user.isPresent };
+          return {
+            ...user,
+            isPresent: !user.isPresent,
+            date: new Date(),
+          };
         }
         return user;
       })
-      .sort((a, b) => a.id - b.id);
+      .sort((a, b) => b.isPresent - a.isPresent);
 
     fs.writeFile(JSON_FILE, JSON.stringify(filterUser), (err) => {
       if (err) return res.sendStatus(400);
-      console.log('User removed from file');
+      console.log('User successfuly updated in file!');
     });
   } else {
-    // Si no existe Tag ID, agregar al file.
+    // Else we add the Tag Info to the json file + isPresent => true
     fs.writeFile(
       JSON_FILE,
       JSON.stringify(
-        [...file, { ...data, isPresent: true }].sort((a, b) => a.id - b.id)
+        [...file, { ...data, isPresent: true, date: new Date() }].sort(
+          (a, b) => b.isPresent - a.isPresent
+        )
       ),
       (err) => {
         if (err) return res.sendStatus(400);
