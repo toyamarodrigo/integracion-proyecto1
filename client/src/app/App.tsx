@@ -2,10 +2,11 @@ import React from "react";
 import { Stack, Wrap, Text, IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { FaGithub } from "react-icons/fa";
 import moment from "moment";
 
 import { Loader, Card } from "../components";
-import { showTimeDifference, MINUTES, HOURS, DAYS, TIME_FORMAT } from "../utils";
+import { showTimeDifference, MINUTES, HOURS, DAYS, TIME_FORMAT, GITHUB_REPO } from "../utils";
 import { useGetUsers, useInterval } from "../hooks";
 
 const App = () => {
@@ -34,14 +35,18 @@ const App = () => {
       position="relative"
       w="100%"
     >
-      <IconButton
-        aria-label="Toggle color mode"
-        icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-        position="absolute"
-        right={8}
-        top={4}
-        onClick={toggleColorMode}
-      />
+      <Stack position="absolute" right={8} top={4}>
+        <IconButton
+          aria-label="Github repo"
+          icon={<FaGithub />}
+          onClick={() => window.open(GITHUB_REPO, "_blank")}
+        />
+        <IconButton
+          aria-label="Toggle color mode"
+          icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          onClick={toggleColorMode}
+        />
+      </Stack>
 
       <Stack pb={8} pt={{ base: 24 }}>
         <Text fontSize={{ base: "2rem", lg: "4rem" }} fontWeight="bold">
