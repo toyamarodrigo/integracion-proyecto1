@@ -10,13 +10,13 @@ url = 'http://localhost:3001/nfc'
 
 try:
     print("Colocar Tarjeta")
-    #id, text = reader.read()
-    #print(id)
-    #print(text)
+    id, text = reader.read()
+    print(id)
+    print(text)
 
     body = {
-        'id': '18',
-        'name': 'Natasha',
+        'id': id,
+        'name': text,
     }
 
     print(body)
