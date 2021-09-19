@@ -6,9 +6,9 @@ import { BasicLayout } from "../../layout/BasicLayout";
 import { useGetUser } from "../../hooks";
 import { createUser } from "../../api/users.api";
 
-interface Props {}
+interface FormProps {}
 
-export const Form = ({}: Props) => {
+export const Form = ({}: FormProps) => {
   const {
     register,
     handleSubmit,
