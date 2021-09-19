@@ -8,4 +8,13 @@ const getUsers = (req, res) => {
   return res.send(data.toString());
 };
 
-module.exports = { getUsers };
+const getUsersById = (req, res) => {
+  const { id } = req.params;
+  const data = fs.readFileSync(JSON_FILE, "utf8");
+  const users = JSON.parse(data);
+  const user = users.find((user) => user.id === id);
+
+  return res.send(user);
+};
+
+module.exports = { getUsers, getUsersById };

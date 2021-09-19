@@ -15,8 +15,8 @@ try:
     #print(text)
 
     body = {
-        'id': '13',
-        'name': 'Maria',
+        'id': '18',
+        'name': 'Natasha',
     }
 
     print(body)

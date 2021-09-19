@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { getUsers } from "../api/fetch.users";
+import { getUsers } from "../api/users.api";
+import { Users } from "../types";
 
 export const useGetUsers = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState<Users[]>(null);
 
   useEffect(() => {
     setIsLoading(true);

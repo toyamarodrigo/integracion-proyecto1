@@ -6,20 +6,22 @@ const { JSON_FILE } = require("../utils/constants");
 const createUsers = (req, res) => {
   const data = req.body;
   const id = req.body.id;
+  const name = req.body.name;
 
   // READ json file
   const file = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
 
-  // Check if TagID exists in json file
+  // Check if TagID or userID exists in json file
   const isUserPresent = getUserPresent(id, file);
 
-  // If TagID exists, set isPresent => false.
+  // If TagID exists, set isPresent => inverse.
   if (isUserPresent) {
     const filterUser = file
       .map((user) => {
         if (user.id === id) {
           return {
             ...user,
+            name: name,
             isPresent: !user.isPresent,
             date: new Date(),
           };

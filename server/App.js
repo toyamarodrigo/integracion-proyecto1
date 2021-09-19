@@ -7,6 +7,7 @@ const nfcRouter = require("./routes/nfc.routes");
 const userRouter = require("./routes/user.routes");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors());
 
 app.use("/nfc", nfcRouter);
