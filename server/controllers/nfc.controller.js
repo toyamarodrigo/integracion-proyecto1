@@ -3,6 +3,8 @@ const fs = require("fs");
 const { getUserPresent } = require("../utils/isUserPresent");
 const { JSON_FILE } = require("../utils/constants");
 
+// TODO: Reformat some functions
+
 const createUsers = (req, res) => {
   const data = req.body;
   const id = req.body.id;

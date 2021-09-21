@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 
+// TODO: Tipados
 export const getUsers = async () => {
   try {
     const result = await axios.get(`${BASE_URL}/users/view`);
@@ -12,6 +13,7 @@ export const getUsers = async () => {
   }
 };
 
+// TODO: Tipados
 export const createUser = async (data) => {
   try {
     const result = await axios.post(`${BASE_URL}/nfc/create`, data);
@@ -22,6 +24,7 @@ export const createUser = async (data) => {
   }
 };
 
+// TODO: Tipados
 export const getUserById = async (id) => {
   try {
     const result = await axios.get(`${BASE_URL}/users/view/${id}`);

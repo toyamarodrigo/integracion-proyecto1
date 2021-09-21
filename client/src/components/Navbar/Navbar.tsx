@@ -21,9 +21,7 @@ import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { GITHUB_REPO } from "../../utils";
 
-interface Props {}
-
-export const Navbar = (props: Props) => {
+export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const btnMenuRef = useRef();

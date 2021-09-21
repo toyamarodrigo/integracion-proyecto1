@@ -6,6 +6,7 @@ import { Users } from "../types";
 
 import { useLocalStorage } from ".";
 
+// TODO: Tipados usestate
 export const useGetUser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<Users>(null);

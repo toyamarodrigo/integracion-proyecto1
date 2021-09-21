@@ -3,6 +3,7 @@ import moment from "moment";
 
 import { TIME_FORMAT } from "../utils/constants";
 
+// TODO: Tipados usestate
 export const useInterval = () => {
   const [actualTime, setActualTime] = useState(moment().format(TIME_FORMAT));
 

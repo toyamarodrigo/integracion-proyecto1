@@ -7,12 +7,12 @@ import { BasicLayout } from "../../layout/BasicLayout";
 import { useGetUsers, useInterval } from "../../hooks";
 import { DAYS, HOURS, MINUTES, showTimeDifference, TIME_FORMAT } from "../../utils";
 
-interface HomeProps {}
-
-export const Home = ({}: HomeProps) => {
+export const Home = () => {
+  // TODO: Tipados
   const { isLoading, users } = useGetUsers();
   const { actualTime } = useInterval();
 
+  // TODO: Tipados
   const handleTimeDifference = (actualTime: string, userDate) => {
     const minutes = moment(actualTime, TIME_FORMAT).diff(userDate, MINUTES);
     const hours = moment(actualTime, TIME_FORMAT).diff(userDate, HOURS);
