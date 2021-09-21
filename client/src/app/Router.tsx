@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 
 import { Form, Home } from "../pages";
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact component={Home} path="/" />
         <Route exact component={Form} path="/form" />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };

@@ -28,7 +28,11 @@ export const Home = ({}: HomeProps) => {
   return (
     <BasicLayout>
       <Stack pb={8} pt={{ base: 24 }}>
-        <Text fontSize={{ base: "2rem", lg: "4rem" }} fontWeight="bold">
+        <Text
+          fontSize={{ base: "1.2rem", md: "2rem", lg: "4rem" }}
+          fontWeight="bold"
+          textAlign="center"
+        >
           {actualTime}
         </Text>
       </Stack>

@@ -12,14 +12,7 @@ import {
   DrawerHeader,
   DrawerBody,
   useColorMode,
-  Avatar,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   Button,
-  Text,
   Link,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
@@ -122,10 +115,15 @@ export const Navbar = (props: Props) => {
                 spacing={6}
               >
                 {Links.map((link, index) => (
-                  <Link key={index} to={`${link.page}`}>
-                    <Text color={colorMode === "dark" ? "white" : "black"} cursor="pointer">
+                  <Link key={index} as={RouterLink} to={`${link.page}`}>
+                    <Button
+                      bgColor="transparent"
+                      color={colorMode === "dark" ? "white" : "black"}
+                      cursor="pointer"
+                      fontWeight="normal"
+                    >
                       {link.name}
-                    </Text>
+                    </Button>
                   </Link>
                 ))}
               </VStack>
