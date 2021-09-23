@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-#import RPi.GPIO as GPIO
-#from mfrc522 import SimpleMFRC522
+import RPi.GPIO as GPIO
+from mfrc522 import SimpleMFRC522
 import requests
 
-#reader = SimpleMFRC522()
+reader = SimpleMFRC522()
 
-url = 'http://localhost:3001/nfc'
+url = 'https://rt-demo-controlaccess.herokuapp.com/nfc'
 
 try:
     print("Colocar Tarjeta")
