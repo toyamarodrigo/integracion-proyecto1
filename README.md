@@ -52,10 +52,10 @@ Data from users are saved on a ``file.json`` file
 ```json
 [
   {
-    id: uuid: string | tagid: string
-    name: string
-    isPresent: boolean
-    date: Date: "YYYY/MM/DD, H:mm:ss A"
+    id: <uuid: string | tagid: string>,
+    name: <string>,
+    isPresent: <boolean>,
+    date: Date: <"YYYY/MM/DD, H:mm:ss A">,
   },
 ]
 ```
