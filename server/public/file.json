@@ -1,1 +1,8 @@
-[{"id":"3bd08fb0-6bc1-4daa-972b-0ad30c30aa70","name":"Rodri","isPresent":true,"date":"2021-09-19T09:02:03.763Z"},{"id":"0af933b1-43d2-4c86-8252-a9c51a949202","name":"Fer","isPresent":true,"date":"2021-09-19T20:22:19.694Z"},{"id":"a57d622b-0ef0-4af8-a93d-9ea1250b6989","name":"Mariano","isPresent":false,"date":"2021-09-19T09:02:25.105Z"}]
+[
+  {
+    "id": "3bd08fb0-6bc1-4daa-972b-0ad30c30aa70",
+    "name": "Rodri",
+    "isPresent": true,
+    "date": "2021-09-19T09:02:03.763Z"
+  },
+]
