@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { BasicLayout } from "../../layout/BasicLayout";
 import { useGetUser } from "../../hooks";
 import { createUser } from "../../api/users.api";
+import { Loader } from "../../components";
 
 export const Form = () => {
   const {
@@ -15,12 +16,20 @@ export const Form = () => {
   const { isLoading, user, id } = useGetUser();
 
   const onSubmit = async (values) => {
-    const body = { id, name: values.name };
+    if (user) {
+      const body = { id, name: user.name };
+      const response = await createUser(body);
 
-    const response = await createUser(body);
+      return response;
+    } else {
+      const body = { id, name: values.name };
+      const response = await createUser(body);
 
-    return response;
+      return response;
+    }
   };
+
+  if (isLoading && !user) return <Loader />;
 
   return (
     <BasicLayout>
@@ -29,9 +38,10 @@ export const Form = () => {
           <FormLabel htmlFor="name">Name</FormLabel>
           <Input
             id="name"
-            placeholder={`ex: ${user?.name}`}
+            isReadOnly={user && true}
+            placeholder={!user && "ex: Julio"}
+            value={user ? user.name : undefined}
             {...register("name", {
-              required: "Name is required",
               minLength: { value: 3, message: "Minimum length should be 3" },
             })}
           />
