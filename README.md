@@ -22,7 +22,17 @@
 * Raspberry Pi 4 Model B
 * Tags 13.56mhz
 
-## How to use
+## How to start locally
+
+You'll need Node, Python before starting the app. Make sure to install them.
+
+```sh
+  # Libraries for raspberry, rc522 + python
+  $ sudo apt-get install python3-dev python3-pip
+  $ sudo pip3 install spide
+  $ sudo pip3 install mfrc522
+  $ sudo pip3 install requests
+```
 
 ```sh
  $ git clone https://github.com/toyamarodrigo/integracion-proyecto1.git
@@ -52,10 +62,10 @@ Data from users are saved on a ``file.json`` file
 ```json
 [
   {
-    id: <uuid: string | tagid: string>,
-    name: <string>,
-    isPresent: <boolean>,
-    date: Date: <"YYYY/MM/DD, H:mm:ss A">,
+    "id": "<uuid: string | tagid: string>",
+    "name": "<string>",
+    "isPresent": "<boolean>",
+    "date": "<Date: YYYY/MM/DD, H:mm:ss A>",
   },
 ]
 ```
